@@ -4,9 +4,10 @@
  */
 package gui.gui2;
 
-
+import Excepciones.BaseException;
 import fachada.Quimico;
 import java.util.List;
+import javax.swing.JOptionPane;
 import logica.logica2.FabricaLogica;
 import logica.logica2.ILogica;
 
@@ -123,17 +124,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnRegistrarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarResiduoActionPerformed
         ILogica logica = FabricaLogica.crearInstancia();
-        
-        List<Quimico> listaQuimicos = logica.obtenerTodosLosQuimicos();
-        
-        new FrmRegistroResiduo(listaQuimicos, logica).setVisible(true);
-        
-        
-        
+        try {
+            List<Quimico> listaQuimicos = logica.obtenerTodosLosQuimicos();
+            new FrmRegistroResiduo(listaQuimicos, logica).setVisible(true);
+        } catch (BaseException e) {
+            muestraMensajeError(e.getMessage());
+        }
+
     }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
 
-    
-    
+    private void muestraMensajeError(String msg) {
+        JOptionPane.showMessageDialog(this, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAsignarTraslado;

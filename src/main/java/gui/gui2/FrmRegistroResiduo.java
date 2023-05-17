@@ -4,12 +4,16 @@
  */
 package gui.gui2;
 
+import Excepciones.BaseException;
+import Excepciones.MalformedResiduo;
+import Excepciones.ResiduoExistenteException;
 import fachada.Quimico;
 import fachada.Residuo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import logica.logica2.FabricaLogica;
 import logica.logica2.ILogica;
 
 /**
@@ -87,6 +91,8 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,45 +172,66 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre");
 
+        jLabel2.setText("Codigo");
+
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(agregar)
-                    .addComponent(regresar))
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1))
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnGuardar))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnGuardar))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(backgroundLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel1))
+                            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(backgroundLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(agregar)
+                                    .addComponent(regresar))
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(agregar)
-                        .addGap(15, 15, 15)
-                        .addComponent(regresar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(5, 5, 5)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(backgroundLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(agregar)
+                                .addGap(15, 15, 15)
+                                .addComponent(regresar))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, 0))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(7, 7, 7)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombre)
+                    .addComponent(txtCodigo))
                 .addGap(11, 11, 11)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalir)
@@ -234,35 +261,32 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
         regresaQuimicoALaLista();
     }//GEN-LAST:event_regresarActionPerformed
 
+    //SelectGuardar (No deja cambiar el nombre profe no sea malo)
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
         Residuo r = new Residuo();
         List<Quimico> quimicos = new ArrayList();
-        DefaultTableModel m = (DefaultTableModel)tablaSelect.getModel();
-        int rows = m.getRowCount();
+        DefaultTableModel seleccionados = (DefaultTableModel)tablaSelect.getModel();
+        int rows = seleccionados.getRowCount();
         
         for(int i = 0; i<rows; i++) {
-            quimicos.add(new Quimico((String)m.getValueAt(i, 1)));
+            quimicos.add(new Quimico((String)seleccionados.getValueAt(i, 1)));
         }
         
         r.setQuimicos(quimicos);
         r.setCodigo(txtNombre.getText());
+        r.setNombre(txtNombre.getText());
+        //Comienzo del 
+        ILogica logica = FabricaLogica.crearInstancia();
+        
         try {
-            r.verificar();
-        } catch (Exception e) {
+            logica.guardarResiduo(r);
+            muestraMensajeConfirmacion("Se pudo guardar");
+        } catch (MalformedResiduo e) {
             mostrarError(e.getMessage());
-            return;
-        }
+        } catch (ResiduoExistenteException e2) {
+            mostrarError(e2.getMessage());
+        } 
         
-        boolean existeOtro = logica.comprobarResiduo(r);
-        
-        if(existeOtro) {
-            mostrarError("EL RESIDUO QUE INTENTA INGRESAR YA EXISTE");
-            return;
-        }
-        
-        logica.guardarResiduo(r);
-        muestraMensajeConfirmacion("SI SE PUDO INGRESAR");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void muestraMensajeConfirmacion(String msg) {
@@ -279,11 +303,13 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton regresar;
     private javax.swing.JTable tablaSelect;
     private javax.swing.JTable tablaTodos;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
