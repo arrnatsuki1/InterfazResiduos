@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI;
+package gui.gui2;
 
-import Entidades.Quimico;
-import Entidades.Residuo;
+import fachada.Quimico;
+import fachada.Residuo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import pkg.ILogica;
+import logica.logica2.ILogica;
 
 /**
  *
@@ -89,9 +89,6 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablaSelect.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,8 +119,6 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
             tablaSelect.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 160));
-
         tablaTodos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -146,15 +141,12 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
             tablaTodos.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 170, 160));
-
         agregar.setText("<");
         agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarActionPerformed(evt);
             }
         });
-        background.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
         regresar.setText(">");
         regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +154,6 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
                 regresarActionPerformed(evt);
             }
         });
-        background.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, -1));
 
         btnGuardar.setText("Guardar residuo");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -170,16 +161,66 @@ public class FrmRegistroResiduo extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        background.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
         btnSalir.setText("Salir");
-        background.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 90, -1));
 
         jLabel1.setText("Nombre");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        background.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, -1));
 
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(agregar)
+                    .addComponent(regresar))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnGuardar))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(agregar)
+                        .addGap(15, 15, 15)
+                        .addComponent(regresar))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(5, 5, 5)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalir)
+                    .addComponent(btnGuardar)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
         setLocationRelativeTo(null);
