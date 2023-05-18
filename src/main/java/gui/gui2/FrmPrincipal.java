@@ -6,6 +6,7 @@ package gui.gui2;
 
 import Excepciones.BaseException;
 import fachada.Quimico;
+import fachada.Residuo;
 import java.util.List;
 import javax.swing.JOptionPane;
 import logica.logica2.FabricaLogica;
@@ -68,6 +69,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnSolicitarTraslado.setText("Solicitar traslado");
+        btnSolicitarTraslado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSolicitarTraslado(evt);
+            }
+        });
 
         btnRegistrarTraslado.setText("Registrar Traslado");
 
@@ -132,6 +138,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
+
+    private void selectSolicitarTraslado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSolicitarTraslado
+        ILogica logica = FabricaLogica.crearInstancia();
+        String productorGenerico = "ITSON";
+        try {
+            new FrmSolicitarTraslado(logica.obtenerTodosLosResiduosDeProductor(productorGenerico));
+        } catch (BaseException e) {
+            muestraMensajeError(e.getMessage());
+        }
+        
+    }//GEN-LAST:event_selectSolicitarTraslado
 
     private void muestraMensajeError(String msg) {
         JOptionPane.showMessageDialog(this, msg, "ERROR", JOptionPane.ERROR_MESSAGE);

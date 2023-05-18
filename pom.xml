@@ -6,13 +6,19 @@
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
-            <groupId>fachada</groupId>
-            <artifactId>Domino2</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>logica.logica2</groupId>
             <artifactId>Logica2</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.lgooddatepicker/LGoodDatePicker -->
+        <dependency>
+            <groupId>com.github.lgooddatepicker</groupId>
+            <artifactId>LGoodDatePicker</artifactId>
+            <version>11.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>fachada</groupId>
+            <artifactId>Domino2</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
