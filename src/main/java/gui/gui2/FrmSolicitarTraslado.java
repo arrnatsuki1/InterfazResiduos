@@ -294,10 +294,10 @@ public class FrmSolicitarTraslado extends javax.swing.JFrame {
             c = new GregorianCalendar(datePicker.getDate().getYear(),
                     datePicker.getDate().getMonthValue()-1, 
                     datePicker.getDate().getDayOfMonth());
+            solicitud.setFechaSalida(c.getTime());
+        } else {
+            solicitud.setFechaSalida(null);
         }
-        
-        
-        solicitud.setFechaSalida(c.getTime());
         solicitud.setProductor(new Productor("ITSON"));
     }
     
