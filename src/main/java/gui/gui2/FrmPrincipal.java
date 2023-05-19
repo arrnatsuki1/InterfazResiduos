@@ -7,6 +7,7 @@ package gui.gui2;
 import Excepciones.BaseException;
 import fachada.Quimico;
 import fachada.Residuo;
+import fachada.Solicitud;
 import java.util.List;
 import javax.swing.JOptionPane;
 import logica.logica2.FabricaLogica;
@@ -37,6 +38,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         btnRegistrarResiduo = new javax.swing.JButton();
         btn = new javax.swing.JButton();
+        botonAsignarTraslado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(400, 300));
@@ -72,11 +74,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         background.add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 140, 110));
 
+        botonAsignarTraslado.setBackground(new java.awt.Color(255, 255, 255));
+        botonAsignarTraslado.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        botonAsignarTraslado.setForeground(new java.awt.Color(0, 0, 0));
+        botonAsignarTraslado.setText("Asignar Traslado");
+        botonAsignarTraslado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(206, 162, 255), 3, true));
+        botonAsignarTraslado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAsignar(evt);
+            }
+        });
+        background.add(botonAsignarTraslado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 150, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +113,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectRegistro
 
     private void selectSolicitarTraslado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSolicitarTraslado
-        
+
         ILogica logica = FabricaLogica.crearInstancia();
         try {
             List<Residuo> listaResiduos = logica.obtenerTodosLosResiduosDeProductor("ITSON");
@@ -107,8 +121,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
         } catch (BaseException e) {
             muestraMensajeError(e.getMessage());
         }
-        
+
     }//GEN-LAST:event_selectSolicitarTraslado
+
+    private void selectAsignar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAsignar
+        ILogica logica = FabricaLogica.crearInstancia();
+
+        try {
+            List<Solicitud> solicitudes = logica.obtenerTodasLasSolicitudes();
+            new FrmSolicitudes(solicitudes).setVisible(true);
+        } catch (BaseException e) {
+            muestraMensajeError(e.getMessage());
+        }
+    }//GEN-LAST:event_selectAsignar
 
     private void muestraMensajeError(String msg) {
         JOptionPane.showMessageDialog(this, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -116,6 +141,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
+    private javax.swing.JButton botonAsignarTraslado;
     private javax.swing.JButton btn;
     private javax.swing.JButton btnRegistrarResiduo;
     // End of variables declaration//GEN-END:variables
