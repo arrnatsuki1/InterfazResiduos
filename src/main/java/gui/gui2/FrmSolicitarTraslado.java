@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import logica.logica2.FabricaLogica;
 import logica.logica2.ILogica;
@@ -165,6 +166,11 @@ public class FrmSolicitarTraslado extends javax.swing.JFrame {
         });
 
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tablaSelect.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -289,6 +295,8 @@ public class FrmSolicitarTraslado extends javax.swing.JFrame {
                     datePicker.getDate().getMonthValue()-1, 
                     datePicker.getDate().getDayOfMonth());
         }
+        
+        
         solicitud.setFechaSalida(c.getTime());
         solicitud.setProductor(new Productor("ITSON"));
     }
@@ -316,6 +324,10 @@ public class FrmSolicitarTraslado extends javax.swing.JFrame {
     private void eliminarResiduo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarResiduo
         eliminarResiduoALaSolicitud();
     }//GEN-LAST:event_eliminarResiduo
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void mostrarError(String msg) {
         JOptionPane.showMessageDialog(this, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     }

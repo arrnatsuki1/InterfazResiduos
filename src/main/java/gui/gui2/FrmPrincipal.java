@@ -35,89 +35,48 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        panelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnRegistrarResiduo = new javax.swing.JButton();
-        btnSolicitarTraslado = new javax.swing.JButton();
-        btnRegistrarTraslado = new javax.swing.JButton();
-        btnAsignarTraslado = new javax.swing.JButton();
+        btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 300));
+        setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sistema Residuos");
-
-        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
-        panelTitulo.setLayout(panelTituloLayout);
-        panelTituloLayout.setHorizontalGroup(
-            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        panelTituloLayout.setVerticalGroup(
-            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
+        btnRegistrarResiduo.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarResiduo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnRegistrarResiduo.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarResiduo.setText("Registrar residuo");
+        btnRegistrarResiduo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(206, 162, 255), 3, true));
+        btnRegistrarResiduo.setFocusPainted(false);
+        btnRegistrarResiduo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarResiduo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarResiduoActionPerformed(evt);
+                selectRegistro(evt);
             }
         });
+        background.add(btnRegistrarResiduo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 110));
 
-        btnSolicitarTraslado.setText("Solicitar traslado");
-        btnSolicitarTraslado.addActionListener(new java.awt.event.ActionListener() {
+        btn.setBackground(new java.awt.Color(255, 255, 255));
+        btn.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btn.setForeground(new java.awt.Color(0, 0, 0));
+        btn.setText("Solicitar traslado");
+        btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(206, 162, 255), 3, true));
+        btn.setFocusPainted(false);
+        btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectSolicitarTraslado(evt);
             }
         });
-
-        btnRegistrarTraslado.setText("Registrar Traslado");
-
-        btnAsignarTraslado.setText("Asignar traslado");
-
-        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
-        background.setLayout(backgroundLayout);
-        backgroundLayout.setHorizontalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAsignarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addComponent(btnSolicitarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnRegistrarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        backgroundLayout.setVerticalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAsignarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSolicitarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
+        background.add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 140, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +87,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarResiduoActionPerformed
+    private void selectRegistro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRegistro
         ILogica logica = FabricaLogica.crearInstancia();
         try {
             List<Quimico> listaQuimicos = logica.obtenerTodosLosQuimicos();
@@ -137,13 +96,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
             muestraMensajeError(e.getMessage());
         }
 
-    }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
+    }//GEN-LAST:event_selectRegistro
 
     private void selectSolicitarTraslado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSolicitarTraslado
+        
         ILogica logica = FabricaLogica.crearInstancia();
-        String productorGenerico = "ITSON";
         try {
-            new FrmSolicitarTraslado(logica.obtenerTodosLosResiduosDeProductor(productorGenerico));
+            List<Residuo> listaResiduos = logica.obtenerTodosLosResiduosDeProductor("ITSON");
+            new FrmSolicitarTraslado(listaResiduos);
         } catch (BaseException e) {
             muestraMensajeError(e.getMessage());
         }
@@ -156,11 +116,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
-    private javax.swing.JButton btnAsignarTraslado;
+    private javax.swing.JButton btn;
     private javax.swing.JButton btnRegistrarResiduo;
-    private javax.swing.JButton btnRegistrarTraslado;
-    private javax.swing.JButton btnSolicitarTraslado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel panelTitulo;
     // End of variables declaration//GEN-END:variables
 }
